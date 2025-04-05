@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chicken Jockey Turbo Mode</title>
+  <style>
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px red; }
+      50% { text-shadow: 0 0 20px yellow; }
+      100% { text-shadow: 0 0 5px red; }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rainbow {
+      0% { border-color: red; }
+      25% { border-color: orange; }
+      50% { border-color: lime; }
+      75% { border-color: blue; }
+      100% { border-color: purple; }
+    }
+
+    body {
+      background: url('https://media.giphy.com/media/TJrCz5VCSFvmc/giphy.gif') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      color: white;
+      font-family: 'Comic Sans MS', cursive;
+      cursor: url('https://cur.cursors-4u.net/animals/ani-12/ani1141.cur'), auto;
+      overflow-x: hidden;
+    }
+
+    .box {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 650px;
+      margin: 50px auto;
+      border: 5px solid red;
+      animation: rainbow 5s infinite linear;
+    }
+
+    h1 {
+      font-size: 3em;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    button {
+      font-size: 1.5em;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      background-color: orange;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+      animation: spin 6s linear infinite;
+    }
+
+    #chickenDance {
+      width: 150px;
+      margin-top: 20px;
+    }
+
+    .reviews {
+      margin-top: 30px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .review {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .review img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid yellow;
+    }
+
+    .review-text {
+      flex-grow: 1;
+    }
+
+    .chicken-emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { top: -5%; }
+      100% { top: 110%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>🐔 Chicken Jockey TURBO</h1>
+    <p>Welcome to the most LEGENDARY game ever made.</p>
+    <button onclick="window.open('https://www.youtube.com/@asteroidlordd', '_blank')">Download Now</button>
+    <img id="chickenDance" src="https://media.tenor.com/XYLqDP8uKXoAAAAi/chicken-dance.gif" alt="Dancing Chicken" />
+
+    <audio id="bgMusic" loop autoplay>
+      <source src="https://www.myinstants.com/media/sounds/chicken.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="cluckSound">
+      <source src="https://www.fesliyanstudios.com/play-mp3/6967" type="audio/mp3">
+    </audio>
+
+    <div class="reviews">
+      <h2>🗣️ Reviews</h2>
+      <div class="review">
+        <img src="https://cdn.discordapp.com/attachments/1357817628252438588/1357922898412568657/image.png?ex=67f1f7bf&is=67f0a63f&hm=4d2cc63c3a5da413b6d29363b5182c3c395aed82eacfa557eae443387e40c27a&" alt="User">
+        <div class="review-text">
+          <strong>Cloudy</strong> ★★★★★<br/>
+          "This game made me cry tears of joy."
+        </div>
+      </div>
+      <div class="review">
+        <img src="https://i.imgur.com/UePbdph.png" alt="User">
+        <div class="review-text">
+          <strong>Crazy Dave</strong> ★★★★★<br/>
+          "Let Cloudy and twowats get mod in project nugget."
+        </div>
+      </div>
+      <div class="review">
+        <img src="https://i.imgur.com/8Km9tLL.png" alt="User">
+        <div class="review-text">
+          <strong>Grandma</strong> ★★★★★<br/>
+          "I love asteroidlord and my daddy twowats."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Chicken rain
+    setInterval(() => {
+      const chicken = document.createElement('div');
+      chicken.classList.add('chicken-emoji');
+      chicken.textContent = '🐔';
+      chicken.style.left = Math.random() * 100 + '%';
+      chicken.style.animationDuration = (2 + Math.random() * 3) + 's';
+      document.body.appendChild(chicken);
+      setTimeout(() => chicken.remove(), 5000);
+    }, 300);
+
+    // Cluck sound on click
+    document.body.addEventListener('click', () => {
+      const cluck = document.getElementById('cluckSound');
+      cluck.currentTime = 0;
+      cluck.play();
+    });
+  </script>
+</body>
+</html>
